@@ -1,9 +1,8 @@
-package entity;
+package Book;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,11 +17,15 @@ public class Book {
     @Column(nullable = false)
     private Long id;
 
+    @NotBlank(message = "Name cannot be empty")
+    private String name;
+
+    @NotBlank(message = "lastName cannot be empty")
+    private String lastName;
+
     @NotBlank(message = "Title cannot be empty")
     private String title;
 
-    @NotBlank(message = "Author cannot be empty")
-    private String author;
 
     @NotBlank
     @Size(min = 10, max = 13, message = "ISBN must be 10-13 characters")
