@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +7,8 @@
     <title>Title</title>
 </head>
 <body>
-<p>Hello</p>
+<form method="POST" action="/home">
+<h1>Hello Home</h1>
+    </form>
 </body>
 </html>
