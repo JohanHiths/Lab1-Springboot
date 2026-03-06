@@ -35,9 +35,11 @@ public class BookService {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
     }
-    public Book update(Book book) {
-        return bookRepository.save(book);
+    public static void updateEntity(UpdateBookDTO dto, Book book) {
+        book.setTitle(dto.getTitle());
+        book.setAuthor(dto.getName());
     }
+
     public Book createBook(Book book) {
         return bookRepository.save(book);
     }

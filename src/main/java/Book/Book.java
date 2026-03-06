@@ -26,6 +26,9 @@ public class Book {
     @NotBlank(message = "Title cannot be empty")
     private String title;
 
+    @NotBlank(message = "Author cannot be empty")
+    private String author;
+
 
     @NotBlank
     @Size(min = 10, max = 13, message = "ISBN must be 10-13 characters")
@@ -48,9 +51,6 @@ public class Book {
     public Book() {
 
     }
-
-
-
 
 
 
