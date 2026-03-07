@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
+</head>
+<body>
+<header>
+
+    <h1 th:text="${message}">Default Welcome Message</h1>
+</header>
+
+<main>
+    <p>Today is: <span th:text="${currentDate}">2023-01-01</span></p>
+
+    <div th:if="${currentDate != null}">
+        <p>Date is available!</p>
+    </div>
+
+<!--    <a th:href="@{/greeting(name='John')}" class="btn btn-primary">-->
+<!--        Go to Greeting Page-->
+<!--    </a>-->
+</main>
+
+<footer>
+    <p>&copy; <span th:text="${currentDate.year}">2026</span> My Application</p>
+</footer>
+</body>
+</html>

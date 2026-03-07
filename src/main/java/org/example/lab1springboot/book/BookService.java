@@ -1,4 +1,4 @@
-package Book;
+package org.example.lab1springboot.book;
 
 
 import org.slf4j.Logger;
@@ -35,12 +35,20 @@ public class BookService {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
     }
-    public static void updateEntity(UpdateBookDTO dto, Book book) {
+    public Book updateBook(Long id, UpdateBookDTO dto) {
+        Book book = getBookById(id);
         book.setTitle(dto.getTitle());
         book.setAuthor(dto.getName());
+
+        bookRepository.save(book);
+        log.info("Book updated successfully");
+        return book;
     }
 
-    public Book createBook(Book book) {
+    public Book createBook(CreateBookDTO dto) {
+
+        Book book = BookMapper.toEntity(dto);
+
         return bookRepository.save(book);
     }
 
