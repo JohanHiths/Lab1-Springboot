@@ -1,4 +1,4 @@
-package Book;
+package org.example.lab1springboot.book;
 
 
 import org.springframework.stereotype.Component;
