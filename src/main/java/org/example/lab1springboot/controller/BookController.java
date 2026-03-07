@@ -36,6 +36,7 @@ public class BookController {
     }
 
 
+
     @PostMapping("books/create")
     public String createBook(@Valid CreateBookDTO dto, BindingResult result) {
 
@@ -53,14 +54,17 @@ public class BookController {
             return "updatebook";
         }
 
-        return "book";
+        bookService.updateBook(id, updateBookDTO);
+
+        return "redirect:/books";
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable Long id, @Valid Book book, BindingResult bindingResult) {
+    public String deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
-        ;
+        return "redirect:/books";
     }
+
 
 
 
