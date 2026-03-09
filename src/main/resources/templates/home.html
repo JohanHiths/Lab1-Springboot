@@ -1,32 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en" >
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
-    <link th:href="@{/css/style.css}" rel="stylesheet">
-
+    <title>Bookstore</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
 </head>
 <body>
-<header>
 
-    <h1 th:text="${message}">Default Welcome Message</h1>
-</header>
+<div th:replace="~{/navbar :: navbar}"></div>
 
 <main>
-    <p>Today is: <span th:text="${currentDate}">2023-01-01</span></p>
-
-    <div th:if="${currentDate != null}">
-        <p>Date is available!</p>
-    </div>
-
-<!--    <a th:href="@{/greeting(name='John')}" class="btn btn-primary">-->
-<!--        Go to Greeting Page-->
-<!--    </a>-->
+    <h1 th:text="${message}">Welcome Message</h1>
+    <p>Today's date is: <span th:text="${currentDate}">Date</span></p>
 </main>
-
-<footer>
-    <p>&copy; <span th:text="${currentDate.year}">2026</span> My Application</p>
-</footer>
 </body>
 </html>
