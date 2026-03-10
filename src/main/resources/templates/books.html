@@ -39,6 +39,20 @@
 
     <br>
     <a th:href="@{/books/create}">Add New Book</a>
+
+    <div class="pagination-container">
+        <a th:if="${currentPage > 0}"
+           th:href="@{/books(page=${currentPage - 1})}">Previous</a>
+
+        <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+        <a th:href="@{/books(page=${i})}"
+           th:text="${i + 1}"
+           th:class="${currentPage == i} ? 'active' : ''"></a>
+    </span>
+
+        <a th:if="${currentPage < totalPages - 1}"
+           th:href="@{/books(page=${currentPage + 1})}">Next</a>
+    </div>
 </main>
 
 </body>

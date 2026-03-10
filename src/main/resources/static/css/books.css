@@ -1,0 +1,12 @@
+.pagination-container a {
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: black;
+}
+
+.pagination-container a.active {
+    background-color: #6d15b5;
+    color: white;
+    border: 1px solid #6d15b5;
+}

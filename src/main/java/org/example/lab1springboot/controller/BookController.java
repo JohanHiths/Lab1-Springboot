@@ -3,19 +3,28 @@ package org.example.lab1springboot.controller;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.example.lab1springboot.BookNotFoundException;
 import org.example.lab1springboot.book.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 
+
+
+
 @Controller
+
 public class BookController {
 
     Logger log = LoggerFactory.getLogger(BookController.class);
+
 
     BookService bookService;
 
@@ -33,15 +42,6 @@ public class BookController {
 //        model.addAttribute("book", book);
 //        return "books";
 //    }
-
-    @GetMapping("/books")
-    public String getBooks(@RequestParam(required = false) String title,Model model) {
-
-        model.addAttribute("activePage", "viewBooks");
-        model.addAttribute("books", bookService.getAllBooks());
-        return "books";
-    }
-
 
 
     @PostMapping("books/create")
@@ -75,7 +75,12 @@ public class BookController {
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable Long id, Model model) {
         Book book = bookService.getBookById(id);
-        model.addAttribute("book", book);
+
+        UpdateBookDTO dto = new UpdateBookDTO();
+
+
+        model.addAttribute("updateBookDTO", dto);
+        model.addAttribute("id", id);
         return "update-book";
     }
 
@@ -86,8 +91,27 @@ public class BookController {
         return "create-book";
     }
 
+    @ExceptionHandler(BookNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleBookNotFound(BookNotFoundException ex, Model model) {
+        model.addAttribute("errorMessage", ex.getMessage());
+        return "error";
+    }
 
+    @GetMapping("/books")
+    public String getAllBooks(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            Model model) {
 
+        Page<Book> bookPage = bookService.getAllBooksPaginated(page, size);
+
+        model.addAttribute("books", bookPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", bookPage.getTotalPages());
+
+        return "books";
+    }
 
 
 
