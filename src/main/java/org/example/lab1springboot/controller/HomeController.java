@@ -11,11 +11,8 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
 
-        System.out.println("DEBUG: Home controller triggered");
-
-        model.addAttribute("message", "Welcome to Thymeleaf!");
-        model.addAttribute("currentDate", java.time.LocalDate.now());
-
+        model.addAttribute("activePage", "home");
         return "home";
     }
+
 }

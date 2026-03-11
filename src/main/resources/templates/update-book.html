@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookstore</title>
+    <link th:href="@{/css/update.css}" rel="stylesheet">
+</head>
+<body>
+
+<header> <img class="logo"  alt="Bookstore Logo" width="200">
+
+    <form th:action="@{/books/{id}(id=${id})}" th:method="put" th:object="${updateBookDTO}">
+
+<!--       <input type="text" th:field="*{title}"-->
+<!--        <input type="text" th:field="*{author}"-->
+
+        <button type="submit">Update Book</button>
+    </form>
+<!--    <div th:replace="~{/navbar :: navbar}"></div>-->
+</header>
+
+</body>
+</html>
