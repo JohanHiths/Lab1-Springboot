@@ -102,15 +102,32 @@ public class BookController {
     public String getAllBooks(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
+            @RequestParam(required = false) String keyword,
             Model model) {
 
-        Page<Book> bookPage = bookService.getAllBooksPaginated(page, size);
+        Page<Book> bookPage = bookService.getAllBooksPaginated(page, size, keyword);
 
         model.addAttribute("books", bookPage.getContent());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", bookPage.getTotalPages());
+        model.addAttribute("keyword", keyword);
 
         return "books";
+    }
+    @PostMapping("/save")
+    public String saveBook(@ModelAttribute("book") Book book) {
+        bookService.saveBook(book); // Du behöver lägga till denna metod i din Service
+        return "redirect:/books"; // Skicka tillbaka användaren till listan
+    }
+
+
+
+    @GetMapping("books/add")
+    public String showAddForm(Model model) {
+
+        model.addAttribute("book", new Book());
+
+        return "add-book";
     }
 
 

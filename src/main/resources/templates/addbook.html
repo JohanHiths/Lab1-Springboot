@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: common-head('Add New Book', 'add-book.css')}"></head>
+<body>
+<div th:replace="~{navbar :: navbar(null)}"></div>
+
+<main class="form-page">
+    <div class="container">
+        <div class="form-card">
+            <h2>Add a New Book</h2>
+            <form th:action="@{/books/save}" th:object="${book}" method="post">
+                <div class="input-group">
+                    <label>Title</label>
+                    <input type="text" th:field="*{title}" placeholder="Enter book title" required>
+                </div>
+                <div class="input-group">
+                    <label>Author</label>
+                    <input type="text" th:field="*{author}" placeholder="Enter author name" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-save">Save Book</button>
+                    <a th:href="@{/books}" class="btn-cancel">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+<body>
+
+</body>
+</html>

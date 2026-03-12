@@ -4,10 +4,56 @@
     <meta charset="UTF-8">
     <title>Book List</title>
     <link th:href="@{/css/books.css}" rel="stylesheet">
-    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+<!--    <link th:href="@{/css/navbar.css}" rel="stylesheet">-->
+
 </head>
 <body>
 <div th:replace="~{navbar :: navbar}"></div>
+<main class="books-page">
+<div class="container">
+
+
+    <div class="page-header">
+        <h1 class="page-title">Our Collection</h1>
+        <a th:href="@{/books/add}" class="btn-add-book">
+            <span>+</span> Add New Book
+        </a>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="books-table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.title}">Title</td>
+                <td th:text="${book.author}">Author</td>
+                <td>
+                    <a href="#" class="btn-edit">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</main>
+
+<a th:if="${currentPage > 0}"
+   th:href="@{/books(page=${currentPage - 1}, keyword=${keyword})}">Previous</a>
+
+<span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+    <a th:href="@{/books(page=${i}, keyword=${keyword})}"
+       th:text="${i + 1}"
+       th:class="${currentPage == i} ? 'active' : ''"></a>
+</span>
+
+<a th:if="${currentPage < totalPages - 1}"
+   th:href="@{/books(page=${currentPage + 1}, keyword=${keyword})}">Next</a>
 
 
 

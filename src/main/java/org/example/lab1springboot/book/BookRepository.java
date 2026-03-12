@@ -1,5 +1,7 @@
 package org.example.lab1springboot.book;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,8 +13,8 @@ import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    @Query("SELECT b FROM Book b WHERE b.title LIKE %:title%")
-    List<Book> findByTitle(@Param("title") String title);
+    Page<Book> findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(
+            String title, String author, Pageable pageable);
 
     @Modifying
     @Query("UPDATE Book b SET b.title = :newTitle WHERE b.id IN :ids")
