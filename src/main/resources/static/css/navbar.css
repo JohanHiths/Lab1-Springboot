@@ -117,3 +117,13 @@ header .navbar {
     color: var(--primary-color);
     background: var(--secondary-color);
 }
+
+.search-form{
+    display:flex;
+    gap:5px;
+}
+
+.search-form input{
+    padding:5px;
+}
+
