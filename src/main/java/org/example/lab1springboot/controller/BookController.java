@@ -114,10 +114,10 @@ public class BookController {
 
         return "books";
     }
-    @PostMapping("/save")
+    @PostMapping("/books/save")
     public String saveBook(@ModelAttribute("book") Book book) {
-        bookService.saveBook(book); // Du behöver lägga till denna metod i din Service
-        return "redirect:/books"; // Skicka tillbaka användaren till listan
+        bookService.saveBook(book);
+        return "redirect:/books";
     }
 
 
