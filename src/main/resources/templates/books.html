@@ -4,56 +4,12 @@
     <meta charset="UTF-8">
     <title>Book List</title>
     <link th:href="@{/css/books.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
 </head>
 <body>
+<div th:replace="~{navbar :: navbar}"></div>
 
 
-
-<main>
-    <h1>All Books</h1>
-
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="b : ${books}">
-            <td th:text="${b.id}">1</td>
-            <td th:text="${b.title}">Titel</td>
-            <td th:text="${b.author}">Författare</td>
-            <td>
-                <a th:href="@{/books/update/{id}(id=${b.id})}">Edit</a>
-
-                <form th:action="@{/books/{id}(id=${b.id})}" th:method="delete" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <br>
-    <a th:href="@{/books/create}">Add New Book</a>
-
-    <div class="pagination-container">
-        <a th:if="${currentPage > 0}"
-           th:href="@{/books(page=${currentPage - 1})}">Previous</a>
-
-        <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
-        <a th:href="@{/books(page=${i})}"
-           th:text="${i + 1}"
-           th:class="${currentPage == i} ? 'active' : ''"></a>
-    </span>
-
-        <a th:if="${currentPage < totalPages - 1}"
-           th:href="@{/books(page=${currentPage + 1})}">Next</a>
-    </div>
-</main>
 
 </body>
 </html>

@@ -66,9 +66,9 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public Page<Book> getAllBooksPaginated(int page, int size){
+
+    public Page<Book> getAllBooksPaginated(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         return bookRepository.findAll(pageable);
     }
-
 }

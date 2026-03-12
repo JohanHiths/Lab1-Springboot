@@ -6,21 +6,24 @@
     <link th:href="@{/css/navbar.css}" rel="stylesheet">
 </head>
 <body>
+<header th:fragment="navbar">
 
-<header class="navbar" th:fragment="navbar">
-
-<!--    <img class="logo" th:src="@{/images/bookstore.png}" alt="logo">-->
-
-    <nav>
-        <ul class="nav-links">
-
-            <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/books}">View Books</a></li>
-            <li><a th:href="@{/books/create}">Add Book</a></li>
-
+    <nav class="navbar">
+        <a th:href="@{/}" class="nav-logo">
+            <h2 class="logo-text">Bookstore📖</h2>
+        </a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a th:href="@{/}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/books}" class="nav-link">Books</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/}" class="nav-link">Contact</a>
+            </li>
         </ul>
     </nav>
-
 </header>
 
 </body>
