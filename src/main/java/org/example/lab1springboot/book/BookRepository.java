@@ -16,9 +16,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     Page<Book> findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(
             String title, String author, Pageable pageable);
 
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query("UPDATE Book b SET b.title = :newTitle WHERE b.id IN :ids")
 
+    @Transactional
     int updateTitles(@Param("ids") List<Long> ids,
                      @Param("newTitle") String newTitle);
 

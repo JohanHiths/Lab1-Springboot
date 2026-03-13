@@ -18,6 +18,7 @@
         <a th:href="@{/books/add}" class="btn-add-book">
             <span>+</span> Add New Book
         </a>
+
     </div>
 
     <div class="table-wrapper">
@@ -40,20 +41,20 @@
             </tbody>
         </table>
     </div>
-</div>
-</main>
-
-<a th:if="${currentPage > 0}"
-   th:href="@{/books(page=${currentPage - 1}, keyword=${keyword})}">Previous</a>
-
-<span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+    <a th:if="${currentPage > 0}"
+       th:href="@{/books(page=${currentPage - 1}, keyword=${keyword})}">Previous</a>
+    <span th:if="${totalPages > 0}" th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
     <a th:href="@{/books(page=${i}, keyword=${keyword})}"
        th:text="${i + 1}"
        th:class="${currentPage == i} ? 'active' : ''"></a>
 </span>
 
-<a th:if="${currentPage < totalPages - 1}"
-   th:href="@{/books(page=${currentPage + 1}, keyword=${keyword})}">Next</a>
+    <a th:if="${currentPage < totalPages - 1}"
+       th:href="@{/books(page=${currentPage + 1}, keyword=${keyword})}">Next</a>
+</div>
+</main>
+
+
 
 
 

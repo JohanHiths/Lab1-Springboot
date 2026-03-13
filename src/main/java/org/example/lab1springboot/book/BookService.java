@@ -49,12 +49,15 @@ public class BookService {
     @Transactional
     public Book updateBook(Long id, UpdateBookDTO dto) {
         Book book = getBookById(id);
-        book.setTitle(dto.getTitle());
-        book.setAuthor(dto.getName());
+        book.setName(dto.name());
+        book.setTitle(dto.title());
+        book.setAuthor(dto.author());
+        book.setGenre(dto.genre());
+        book.setPublishedDate(dto.publishedDate());
 
         Book updatedBook = bookRepository.save(book);
 
-        log.info("Book updated successfully");
+        log.info("Updating book with ID: {}", id);
         return updatedBook;
     }
 

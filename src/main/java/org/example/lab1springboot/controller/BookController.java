@@ -65,7 +65,7 @@ public class BookController {
         return "redirect:/books";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public String deleteBook(@PathVariable Long id) {
 
         bookService.deleteBook(id);
@@ -76,7 +76,7 @@ public class BookController {
     public String showUpdateForm(@PathVariable Long id, Model model) {
         Book book = bookService.getBookById(id);
 
-        UpdateBookDTO dto = new UpdateBookDTO();
+        UpdateBookDTO dto = new UpdateBookDTO(id, book.getName(), book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishedDate());
 
 
         model.addAttribute("updateBookDTO", dto);
@@ -87,8 +87,8 @@ public class BookController {
     @GetMapping("books/create")
     public String showCreateForm(Model model) {
 
-        model.addAttribute("book", new CreateBookDTO());
-        return "create-book";
+        model.addAttribute("book", new CreateBookDTO(null, "", "", "", "", null));
+        return "add-book";
     }
 
     @ExceptionHandler(BookNotFoundException.class)
@@ -112,10 +112,15 @@ public class BookController {
         model.addAttribute("totalPages", bookPage.getTotalPages());
         model.addAttribute("keyword", keyword);
 
+
         return "books";
     }
     @PostMapping("/books/save")
-    public String saveBook(@ModelAttribute("book") Book book) {
+    public String saveBook(@Valid @ModelAttribute("book") Book book, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            log.warn("Validation errors: {}", result.getAllErrors());
+            return "add-book";
+        }
         bookService.saveBook(book);
         return "redirect:/books";
     }

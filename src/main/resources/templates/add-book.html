@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head >
+<head>
     <title>Add New Book</title>
     <link th:href="@{/css/add-book.css}" rel="stylesheet">
 </head>
@@ -11,20 +11,43 @@
     <div class="container">
         <div class="form-card">
             <h2>Add a New Book</h2>
-            <form th:action="@{/save}" th:object="${book}" method="post">
+            <form th:action="@{/books/save}" th:object="${book}" method="post">
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" th:field="*{name}" placeholder="Enter name" required>
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                </div>
+
                 <div class="input-group">
                     <label>Title</label>
                     <input type="text" th:field="*{title}" placeholder="Enter book title" required>
+                    <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
                 </div>
+
                 <div class="input-group">
                     <label>Author</label>
                     <input type="text" th:field="*{author}" placeholder="Enter author name" required>
+                    <div th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></div>
                 </div>
+
+                <div class="input-group">
+                    <label>Genre</label>
+                    <input type="text" th:field="*{genre}" placeholder="Enter genre" required>
+                    <div th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
+                </div>
+
+                <div class="input-group">
+                    <label>Published date</label>
+                    <input type="date" th:field="*{publishedDate}" required>
+                    <div th:if="${#fields.hasErrors('publishedDate')}" th:errors="*{publishedDate}"></div>
+                </div>
+
                 <div class="form-buttons">
                     <button type="submit" class="btn-save">Save Book</button>
                     <a th:href="@{/books}" class="btn-cancel">Cancel</a>
                 </div>
             </form>
+
         </div>
     </div>
 </main>
