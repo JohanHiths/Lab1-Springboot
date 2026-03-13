@@ -29,15 +29,14 @@
 
     --site-max-width: 1300px;
 }
-header{
-    background: var(--primary-color);
-}
 
 ul {
     list-style: none;
 }
 
-
+a {
+    text-decoration: none;
+}
 
 button{
     cursor: pointer;
@@ -53,6 +52,15 @@ a{
     text-decoration: none;
 }
 
+header{
+    background: var(--primary-color);
+}
+
+.navbar .nav-logo .logo-text{
+    color: var(--white-color);
+
+}
+
 header .navbar {
     display: flex;
     padding: 20px;
@@ -63,17 +71,10 @@ header .navbar {
 
 .navbar .nav-logo .logo-text{
     color: var(--white-color);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bolder);
 }
 
 .navbar .nav-menu .nav-link{
-    padding: 10px 18px;
-    background: var(--secondary-color);
-    font-size: var(--font-size-m);
-    border-radius: var(--border-radius-medium);
     color: var(--white-color);
-    transition: all 0.3s ease;
 }
 
 .navbar .nav-menu{
@@ -112,18 +113,36 @@ header .navbar {
 
 }
 
-.navbar .nav-menu .nav-link:hover
-{
-    color: var(--primary-color);
+/* Grundstilen för Order Now-knappen */
+.button-order-now {
     background: var(--secondary-color);
+    color: var(--white-color);
+    padding: 12px 25px;
+    border-radius: var(--border-radius-small);
+    display: inline-block;
+    transition: all 0.3s ease; /* Jätteviktigt för animationen! */
+    font-weight: var(--font-weight-bold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.search-form{
-    display:flex;
-    gap:5px;
+/* Den coola effekten */
+.button-order-now:hover {
+    background: #b5852a; /* En något mörkare nyans av guld */
+    transform: translateY(-3px); /* Knappen "hoppar upp" 3 pixlar */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Skuggan blir djupare */
 }
 
-.search-form input{
-    padding:5px;
+/* Contact Us knappen (Outline-effekt) */
+.button-contact-us {
+    border: 2px solid var(--white-color);
+    color: var(--white-color);
+    padding: 10px 23px; /* Lite mindre pga bordern */
+    border-radius: var(--border-radius-small);
+    margin-left: 10px;
+    transition: all 0.3s ease;
 }
 
+.button-contact-us:hover {
+    background: var(--white-color);
+    color: var(--primary-color);
+}

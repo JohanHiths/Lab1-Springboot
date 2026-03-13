@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head >
     <meta charset="UTF-8">
     <title>Bookstore</title>
-    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link th:href="@{/css/home.css}" rel="stylesheet">
+<!--      <link th:href="@{/css/navbar.css}" rel="stylesheet">-->
+      <link th:href="@{/css/home.css}" rel="stylesheet">
 </head>
 <body>
-
-<div th:replace="~{/navbar :: navbar}"></div>
-
+<div th:replace="~{navbar :: navbar}"></div>
 <main>
-    <h1 th:text="${message}">Welcome Message</h1>
-    <p>Today's date is: <span th:text="${currentDate}">Date</span></p>
+    <section class="hero-section">
+        <div class="section-center">
+            <div class="hero-details">
+                <h2 class="title">Most popular books</h2>
+                <h3 class="subtitle"></h3>
+                <p class="description">WELCOME TO THE BOOKSTORE!</p>
+
+                <div class="buttons">
+                    <a href="/books" class="button-order-now">Order now</a>
+                    <a href="/books" class="button-contact-us">Contact us</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+<!--                <img src="images/book.png" alt="Book" class="hero-image">-->
+            </div>
+        </div>
+
+    </section>
 </main>
+
+
 </body>
 </html>

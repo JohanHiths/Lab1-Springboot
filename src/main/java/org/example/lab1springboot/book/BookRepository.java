@@ -1,9 +1,33 @@
 package org.example.lab1springboot.book;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 public interface BookRepository extends JpaRepository<Book, Long> {
+
+    Page<Book> findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(
+            String title, String author, Pageable pageable);
+
+    @Modifying
+    @Query("UPDATE Book b SET b.title = :newTitle WHERE b.id IN :ids")
+
+    int updateTitles(@Param("ids") List<Long> ids,
+                     @Param("newTitle") String newTitle);
+
+    @Modifying
+    @Query("UPDATE Book b SET b.title = :newTitle WHERE b.id = :id")
+    @Transactional
+    int updateTitle(@Param("id") Long id,
+                    @Param("newTitle") String newTitle);
+
 
 
 }
