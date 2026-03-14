@@ -3,6 +3,18 @@ package org.example.lab1springboot.book;
 public class BookMapper {
 
 
+    public static CreateBookDTO toCreateDTO(Book book) {
+        if (book == null) return null;
+
+        return new CreateBookDTO(
+                book.getId(),
+                book.getName(),
+                book.getTitle(),
+                book.getAuthor(),
+                book.getGenre(),
+                book.getPublishedDate()
+        );
+    }
     public static Book toEntity(CreateBookDTO dto) {
         if (dto == null) return null;
 
@@ -29,4 +41,6 @@ public class BookMapper {
                 book.getPublishedDate()
         );
     }
+
+
 }

@@ -135,6 +135,19 @@ public class BookController {
         return "add-book";
     }
 
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        Book book = bookService.getBookById(id);
+        CreateBookDTO dto = BookMapper.toCreateDTO(book);
+
+        model.addAttribute("book", dto);
+        model.addAttribute("isEdit", true);
+        return "add-book";
+
+    }
+
+
+
 
 
 }
