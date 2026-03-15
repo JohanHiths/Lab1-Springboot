@@ -1,36 +1,46 @@
 package org.example.lab1springboot.book;
 
-
-import org.springframework.stereotype.Component;
-
-@Component
 public class BookMapper {
 
 
+    public static CreateBookDTO toCreateDTO(Book book) {
+        if (book == null) return null;
+
+        return new CreateBookDTO(
+                book.getId(),
+                book.getName(),
+                book.getTitle(),
+                book.getAuthor(),
+                book.getGenre(),
+                book.getPublishedDate()
+        );
+    }
     public static Book toEntity(CreateBookDTO dto) {
+        if (dto == null) return null;
+
         Book book = new Book();
-        book.setName(dto.getName());
-        book.setDescription(dto.getDescription());
-        book.setAuthor(dto.getName());
+
+        book.setName(dto.name());
+        book.setTitle(dto.title());
+        book.setAuthor(dto.author());
+        book.setGenre(dto.genre());
+        book.setPublishedDate(dto.publishedDate());
 
         return book;
     }
 
-    public BookDTO toBookDTO(Book book) {
-        BookDTO bookDTO = new BookDTO();
-        bookDTO.setName(book.getName());
-        return bookDTO;
-    }
+    public static BookDTO toDTO(Book book) {
+        if (book == null) return null;
 
-    public Book toBook(CreateBookDTO createDTO) {
-        Book book = new Book();
-        book.setName(createDTO.getName());
-        return book;
+        return new BookDTO(
+                book.getId(),
+                book.getName(),
+                book.getTitle(),
+                book.getAuthor(),
+                book.getGenre(),
+                book.getPublishedDate()
+        );
     }
-    public void updateBookDTO(UpdateBookDTO dto, Book book) {
-        book.setName(dto.getName());
-    }
-
 
 
 }

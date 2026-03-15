@@ -76,10 +76,7 @@ header .navbar {
     transition: all 0.3s ease;
 }
 
-.navbar .nav-menu{
-    display: flex;
-    gap: 10px;
-}
+
 
 .logo-text{
     font-size: var(--font-size-xl);
@@ -87,13 +84,13 @@ header .navbar {
     font-weight: var(--font-weight-bolder);
 }
 
-
-
-.nav-menu{
-    display:flex;
-    gap:20px;
-
+.navbar .nav-menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
 }
+
+
 
 .nav-link{
     color: var(--white-color);
