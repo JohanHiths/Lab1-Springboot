@@ -20,12 +20,12 @@
                 <a th:href="@{/books}" class="nav-link">Books</a>
             </li>
             <li class="nav-item">
-                <a th:href="@{/}" class="nav-link">Contact</a>
+                <a th:href="@{/contact}" class="nav-link">Contact</a>
             </li>
         </ul>
         <form th:action="@{/books}" method="get" class="search-form">
-            <label>
-                <input type="text" name="keyword" th:value="${keyword}" placeholder="Search books...">
+            <label for="keyword">Search books</label>
+            <input id="keyword" type="text" name="keyword" th:value="${keyword}" placeholder="Search books...">
             </label>
             <button type="submit">Search</button>
             </form>

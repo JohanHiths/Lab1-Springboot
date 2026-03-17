@@ -1,10 +1,8 @@
-package org.example.lab1springboot.controller;
+package org.example.lab1springboot.book;
 
 
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 import org.example.lab1springboot.BookNotFoundException;
-import org.example.lab1springboot.book.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-
+@RequestMapping("/books")
 public class BookController {
 
     Logger log = LoggerFactory.getLogger(BookController.class);
@@ -35,16 +33,16 @@ public class BookController {
 
 
 
-//    @GetMapping("/{id}")
-//    public String getBookById(@PathVariable Long id, Model model) {
-//        Book book = bookService.getBookById(id);
-//
-//        model.addAttribute("book", book);
-//        return "books";
-//    }
+    @GetMapping("/{id}")
+    public String getBookById(@PathVariable Long id, Model model) {
+        Book book = bookService.getBookById(id);
+
+        model.addAttribute("book", book);
+        return "books";
+    }
 
 
-    @PostMapping("books/create")
+    @PostMapping("/create")
     public String createBook(@Valid CreateBookDTO dto, BindingResult result) {
 
         if(result.hasErrors()){
@@ -57,7 +55,7 @@ public class BookController {
     @PutMapping("/{id}")
     public String updateBook(@PathVariable Long id, @Valid UpdateBookDTO updateBookDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "update-book";
+            return "books";
         }
 
         bookService.updateBook(id, updateBookDTO);
@@ -81,10 +79,10 @@ public class BookController {
 
         model.addAttribute("updateBookDTO", dto);
         model.addAttribute("id", id);
-        return "update-book";
+        return "books";
     }
 
-    @GetMapping("books/create")
+    @GetMapping("/create")
     public String showCreateForm(Model model) {
 
         model.addAttribute("book", new CreateBookDTO(null, "", "", "", "", null));
@@ -98,7 +96,7 @@ public class BookController {
         return "error";
     }
 
-    @GetMapping("/books")
+   @GetMapping({"", "/"})
     public String getAllBooks(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
@@ -115,7 +113,7 @@ public class BookController {
 
         return "books";
     }
-    @PostMapping("/books/save")
+    @PostMapping("/save")
     public String saveBook(@Valid @ModelAttribute("book") Book book, BindingResult result, Model model) {
         if (result.hasErrors()) {
             log.warn("Validation errors: {}", result.getAllErrors());
@@ -127,7 +125,7 @@ public class BookController {
 
 
 
-    @GetMapping("books/add")
+    @GetMapping("/add")
     public String showAddForm(Model model) {
 
         model.addAttribute("book", new Book());
@@ -145,6 +143,7 @@ public class BookController {
         return "add-book";
 
     }
+
 
 
 

@@ -73,10 +73,12 @@ public class BookService {
     public Page<Book> getAllBooksPaginated(int page, int size, String keyword) {
         Pageable pageable = PageRequest.of(page, size);
 
+
         if (keyword != null && !keyword.isEmpty()) {
             return bookRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(
                     keyword, keyword, pageable);
         }
+
 
         return bookRepository.findAll(pageable);
     }

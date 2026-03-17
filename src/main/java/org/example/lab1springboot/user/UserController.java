@@ -1,7 +1,6 @@
-package org.example.lab1springboot.controller;
+package org.example.lab1springboot.user;
 
 import jakarta.validation.Valid;
-import org.example.lab1springboot.user.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
