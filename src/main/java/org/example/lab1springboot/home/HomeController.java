@@ -1,4 +1,4 @@
-package org.example.lab1springboot.controller;
+package org.example.lab1springboot.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

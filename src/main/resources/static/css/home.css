@@ -143,3 +143,28 @@ header .navbar {
     background: var(--white-color);
     color: var(--primary-color);
 }
+
+.readme-button {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-small);
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.ticker__text{
+    color:#ffffff;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bolder);
+    text-align: center;
+}
+
+.sale-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:5px;
+    column-gap: 10px;
+    background-color: #ff4242;
+}

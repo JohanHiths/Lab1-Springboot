@@ -29,9 +29,11 @@ public class BookRepositoryTest {
     @Test
     void shouldFindBooks() {
         Book book = new Book();
+        book.setName("Test Name");
         book.setTitle("Test Title");
         book.setAuthor("Test Author");
         book.setGenre("Fiction");
+
         book.setPublishedDate(LocalDate.now());
 
         entityManager.persistAndFlush(book);
@@ -44,16 +46,19 @@ public class BookRepositoryTest {
     @Test
     void testSaveAndFindBook() {
         Book book = new Book();
+        book.setName("Guide Name");
         book.setTitle("The Spring Guide");
         book.setAuthor("Gemini");
+        book.setGenre("Tech");
+        book.setPublishedDate(LocalDate.now());
 
         Book savedBook = bookRepository.save(book);
 
         Optional<Book> found = bookRepository.findById(savedBook.getId());
 
 
-        assert(found.isPresent());
-        assert(found.get().getTitle().equals("The Spring Guide"));
+        assertThat(found).isPresent();
+        assertThat(found.orElseThrow().getTitle()).isEqualTo("The Spring Guide");
     }
 
 

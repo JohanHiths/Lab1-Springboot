@@ -1,5 +1,8 @@
 package org.example.lab1springboot.book;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class BookMapper {
 
 
