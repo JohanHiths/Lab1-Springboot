@@ -13,16 +13,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ContactController {
 
-    ContactRepository contactRepository;
+    private final ContactRepository contactRepository;
+
     public ContactController(ContactRepository contactRepository) {
         this.contactRepository = contactRepository;
     }
 
-
     @GetMapping("/contact")
-    public String showContactForm(Model model) {
+    public String contact(Model model, @RequestParam(required = false) String submit) {
 
         model.addAttribute("contactForm", new ContactForm("", "", "", "", ""));
+        model.addAttribute("activePage", "contact");
+        model.addAttribute("submit", submit);
+
         return "contact";
     }
 
@@ -44,17 +47,7 @@ public class ContactController {
         return "redirect:/?success";
 
     }
-    @GetMapping("/contact/")
-    public String contact(Model model , @RequestParam(required = false) String submit) {
-        model.addAttribute("email", "");
-        model.addAttribute("message", "");
-        model.addAttribute("name", "");
-        model.addAttribute("activePage", "contact");
-        model.addAttribute("lastName", "");
-        model.addAttribute("phone", "");
-        model.addAttribute("submit", submit);
-        return "contact";
-    }
+
 
 
 

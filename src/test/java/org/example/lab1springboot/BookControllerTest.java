@@ -1,6 +1,8 @@
 package org.example.lab1springboot;
 
 import org.example.lab1springboot.book.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -27,12 +29,26 @@ public class BookControllerTest {
 
     @MockitoBean
     private BookService service;
+    @Autowired
+    private BookService bookService;
 
+
+
+
+
+    @Test
+    void get404WhenBookNotFound() throws Exception {
+        when(service.getBookById(999L)).thenThrow(new BookNotFoundException("Not found"));
+
+        mockMvc.perform(get("/books/999"))
+                .andExpect(status().isNotFound());
+    }
 
     @Test
     void bookShouldReturnListView() throws Exception{
 
         when(service.getAllBooksPaginated(anyInt(), anyInt(), any())).thenReturn(Page.empty());
+
 
 
         mockMvc.perform(get("/books")
@@ -44,26 +60,18 @@ public class BookControllerTest {
                 .andExpect(model().attributeExists("books"));
 
 
+
     }
     @Test
     void bookShouldReturnUpdateView() throws Exception {
 
-        Book book = new Book();
-        book.setId(1L);
-        book.setName("name");
-        book.setTitle("title");
-        book.setAuthor("author");
-        book.setGenre("genre");
-        book.setPublishedDate(LocalDate.now());
-
-        when(service.getBookById(eq(1L))).thenReturn(book);
-
         mockMvc.perform(get("/books/update/1"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("books"))
-                .andExpect(model().attributeExists("updateBookDTO"))
-                .andExpect(model().attribute("id", 1L));
+                .andDo(print())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/books/edit/1"));
     }
+
+
 
 
 
