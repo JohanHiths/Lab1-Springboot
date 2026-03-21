@@ -6,7 +6,9 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -20,8 +22,6 @@ public class Book {
     @Column(nullable = false)
     private Long id;
 
-    @NotBlank(message = "Name cannot be empty")
-    private String name;
 
 
     @NotBlank(message = "Title cannot be empty")
@@ -30,9 +30,6 @@ public class Book {
     @NotBlank(message = "Author cannot be empty")
     private String author;
 
-//    @NotBlank
-//    @jakarta.validation.constraints.Size(min = 10, max = 13, message = "ISBN must be 10-13 characters")
-//    private String isbn;
 
     @NotBlank(message = "Genre cannot be empty")
     private String genre;
@@ -40,20 +37,17 @@ public class Book {
     @NotNull(message = "Published date cannot be empty")
     private LocalDate publishedDate;
 
-//    @NotBlank(message = "Description cannot be empty")
-//    @jakarta.validation.constraints.Size(min = 1, message = "Description must be at least 1 character")
-//    private String description;
-
-//    @NotNull(message = "Pagecount cannot be empty")
-//    @Min(value = 1, message = "Pagecount must be at least 1")
-//    private Integer pageCount;
-
-
-
-//    @NotNull(message = "Price cannot be empty")
-//    @Positive(message = "Price must be greater than 0")
-//    private Double price;
 
     public Book() {
     }
+
+    public Book(Long id, String title, String author, String genre, LocalDate publishedDate) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.publishedDate = publishedDate;
+    }
+
+
 }

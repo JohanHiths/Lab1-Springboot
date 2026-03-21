@@ -72,20 +72,14 @@ public class BookController {
 
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable Long id, Model model) {
-        Book book = bookService.getBookById(id);
+        return "redirect:/books/edit/" + id;
 
-        UpdateBookDTO dto = new UpdateBookDTO(id, book.getName(), book.getTitle(), book.getAuthor(), book.getGenre(), book.getPublishedDate());
-
-
-        model.addAttribute("updateBookDTO", dto);
-        model.addAttribute("id", id);
-        return "books";
     }
 
     @GetMapping("/create")
     public String showCreateForm(Model model) {
 
-        model.addAttribute("book", new CreateBookDTO(null, "", "", "", "", null));
+        model.addAttribute("book", new CreateBookDTO(null, "", "", "",null));
         return "add-book";
     }
 

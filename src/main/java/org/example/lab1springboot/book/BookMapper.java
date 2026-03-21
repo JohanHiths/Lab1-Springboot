@@ -11,7 +11,6 @@ public class BookMapper {
 
         return new CreateBookDTO(
                 book.getId(),
-                book.getName(),
                 book.getTitle(),
                 book.getAuthor(),
                 book.getGenre(),
@@ -23,7 +22,6 @@ public class BookMapper {
 
         Book book = new Book();
 
-        book.setName(dto.name());
         book.setTitle(dto.title());
         book.setAuthor(dto.author());
         book.setGenre(dto.genre());
@@ -37,7 +35,6 @@ public class BookMapper {
 
         return new BookDTO(
                 book.getId(),
-                book.getName(),
                 book.getTitle(),
                 book.getAuthor(),
                 book.getGenre(),

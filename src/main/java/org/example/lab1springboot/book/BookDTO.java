@@ -9,8 +9,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-public record BookDTO(Long id, String name, String title, String author, String genre,  LocalDate publishedDate) {
-
-
+public record BookDTO(Long id, String title, String author, String genre,  LocalDate publishedDate) {
 
 }

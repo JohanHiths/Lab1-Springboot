@@ -49,7 +49,6 @@ public class BookService {
     @Transactional
     public Book updateBook(Long id, UpdateBookDTO dto) {
         Book book = getBookById(id);
-        book.setName(dto.name());
         book.setTitle(dto.title());
         book.setAuthor(dto.author());
         book.setGenre(dto.genre());
@@ -78,7 +77,6 @@ public class BookService {
             return bookRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(
                     keyword, keyword, pageable);
         }
-
 
         return bookRepository.findAll(pageable);
     }

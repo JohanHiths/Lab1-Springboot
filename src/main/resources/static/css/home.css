@@ -5,6 +5,8 @@
     font-family: Poppins, sans-serif;
 }
 
+
+
 :root {
     --white-color: #e8e7e7;
     --dark-color: #0c0909;
@@ -28,6 +30,10 @@
     --border-radius-circle: 50%;
 
     --site-max-width: 1300px;
+}
+
+body{
+    background-color: var(--secondary-color);
 }
 
 ul {
