@@ -29,12 +29,6 @@ public class BookControllerTest {
 
     @MockitoBean
     private BookService service;
-    @Autowired
-    private BookService bookService;
-
-
-
-
 
     @Test
     void get404WhenBookNotFound() throws Exception {
@@ -59,8 +53,6 @@ public class BookControllerTest {
                 .andExpect(view().name("books"))
                 .andExpect(model().attributeExists("books"));
 
-
-
     }
     @Test
     void bookShouldReturnUpdateView() throws Exception {
@@ -70,9 +62,5 @@ public class BookControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/books/edit/1"));
     }
-
-
-
-
 
 }

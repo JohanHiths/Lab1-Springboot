@@ -24,9 +24,9 @@
             </li>
         </ul>
         <form th:action="@{/books}" method="get" class="search-form">
-            <label for="keyword">Search books</label>
+            <label for="keyword"></label>
             <input id="keyword" type="text" name="keyword" th:value="${keyword}" placeholder="Search books...">
-            <button type="submit">Search</button>
+            <button class="button" type="submit">Search</button>
             </form>
     </nav>
 </header>

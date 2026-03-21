@@ -174,3 +174,14 @@ header .navbar {
     column-gap: 10px;
     background-color: #ff4242;
 }
+
+.search-form input{
+    padding:5px;
+    border-radius: 5px;
+    color: var(--dark-color);
+}
+
+.button{
+    color: var(--white-color);
+    font-size: var(--font-size-m);
+}
