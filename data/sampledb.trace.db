@@ -1,0 +1,24 @@
+2026-03-15 11:29:22.680535+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.author,b1_0.genre,b1_0.name,b1_0.published_date,b1_0.title from book b1_0 offset ? rows fetch first ? rows only [42102-232]
+2026-03-15 11:29:23.625136+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.author,b1_0.genre,b1_0.name,b1_0.published_date,b1_0.title from book b1_0 offset ? rows fetch first ? rows only [42102-232]
+2026-03-15 11:29:24.073269+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.author,b1_0.genre,b1_0.name,b1_0.published_date,b1_0.title from book b1_0 offset ? rows fetch first ? rows only [42102-232]
+2026-03-15 11:29:24.417321+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.author,b1_0.genre,b1_0.name,b1_0.published_date,b1_0.title from book b1_0 offset ? rows fetch first ? rows only [42102-232]
+2026-03-15 11:29:26.559125+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.author,b1_0.genre,b1_0.name,b1_0.published_date,b1_0.title from book b1_0 offset ? rows fetch first ? rows only [42102-232]
+2026-03-15 11:29:26.976589+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.author,b1_0.genre,b1_0.name,b1_0.published_date,b1_0.title from book b1_0 offset ? rows fetch first ? rows only [42102-232]
+2026-03-15 11:29:27.328245+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.author,b1_0.genre,b1_0.name,b1_0.published_date,b1_0.title from book b1_0 offset ? rows fetch first ? rows only [42102-232]
+2026-03-15 11:29:29.666100+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOK" not found; SQL statement:
+select b1_0.id,b1_0.author,b1_0.genre,b1_0.name,b1_0.published_date,b1_0.title from book b1_0 offset ? rows fetch first ? rows only [42102-232]
