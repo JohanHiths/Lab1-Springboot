@@ -1,6 +1,7 @@
 package org.example.lab1springboot;
 
 import org.example.lab1springboot.book.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -40,6 +41,27 @@ public class BookMapperTest {
     }
 
     @Test
-    void shouldUpdateExistingEntityFromUpdateDTO() {
+    void shouldUpdateExistingEntity_FromUpdateDTO() {
+
+        Book existingBook = new Book();
+        existingBook.setId(1L);
+        existingBook.setTitle("Old Title");
+        existingBook.setAuthor("Old Author");
+
+        UpdateBookDTO updateDto = new UpdateBookDTO(
+                1L,
+                "New Title",
+                "New Author",
+                "New Genre",
+                LocalDate.now()
+        );
+
+        BookMapper.updateEntityFromDto(updateDto, existingBook);
+
+        assertEquals(1L, existingBook.getId());
+        assertEquals("New Title", existingBook.getTitle());
+        assertEquals("New Author", existingBook.getAuthor());
+        assertEquals("New Genre", existingBook.getGenre());
+
     }
 }
