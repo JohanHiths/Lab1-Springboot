@@ -1,0 +1,8 @@
+CREATE SEQUENCE IF NOT EXISTS book_seq START WITH 1 INCREMENT BY 50;
+
+SELECT setval('book_seq', COALESCE((SELECT MAX(id) FROM book), 0) + 1);
+
+ALTER TABLE book ALTER COLUMN id SET DEFAULT nextval('book_seq');
+
+ALTER TABLE contact_messages
+    ALTER COLUMN phone TYPE VARCHAR(255) USING (phone::VARCHAR(255));

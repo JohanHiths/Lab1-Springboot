@@ -43,4 +43,11 @@ public class BookMapper {
     }
 
 
+    public static void updateEntityFromDto(UpdateBookDTO updateDto, Book entity) {
+        if (updateDto == null || entity == null) return;
+        entity.setTitle(updateDto.title());
+        entity.setAuthor(updateDto.author());
+        entity.setGenre(updateDto.genre());
+        entity.setPublishedDate(updateDto.publishedDate());
+    }
 }
